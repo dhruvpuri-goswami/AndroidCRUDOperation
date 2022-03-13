@@ -18,11 +18,11 @@ import com.example.androidcrudoperation.modal.Courses;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class UpdateCourse extends AppCompatActivity {
 
     ArrayList<String> arrayList=new ArrayList<String>();
 
-    MyDBHandler db =new MyDBHandler(MainActivity.this);
+    MyDBHandler db =new MyDBHandler(UpdateCourse.this);
     EditText name,duration,desc;
     Button add,update,delete,show;
     ListView lv;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_updatecourse);
 
         name = (EditText)findViewById(R.id.name);
         duration = (EditText)findViewById(R.id.duration);
@@ -57,25 +57,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addItem(View view) {
-        String coursename = name.getText().toString();
-        String dura = duration.getText().toString();
-        String description = desc.getText().toString();
-
-        Courses courses = new Courses();
-        courses.setName(coursename);
-        courses.setDuration(dura);
-        courses.setDescription(description);
-        db.addcourse(courses);
-        Toast.makeText(getApplicationContext(),"Course Inserted Successfully...",Toast.LENGTH_SHORT).show();
-    }
-
-    public void updateItem(View view) {
-        Intent intent = new Intent(MainActivity.this,UpdateCourse.class);
+        Intent intent = new Intent(UpdateCourse.this,MainActivity.class);
         startActivity(intent);
     }
 
+    public void updateItem(View view) {
+        String cname=name.getText().toString();
+        String dura = duration.getText().toString();
+        String descri = desc.getText().toString();
+        Courses courses=new Courses();
+        courses.setName(cname);
+        courses.setDuration(dura);
+        courses.setDescription(descri);
+        int ar = db.updatecourse(courses);
+        if(ar==1){
+            Toast.makeText(getApplicationContext(),"Course Updated Successfully",Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void deleteItem(View view) {
-        Intent intent = new Intent(MainActivity.this,delete.class);
+        Intent intent = new Intent(UpdateCourse.this,delete.class);
         startActivity(intent);
     }
 }

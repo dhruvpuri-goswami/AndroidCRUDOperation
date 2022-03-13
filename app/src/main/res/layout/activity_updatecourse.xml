@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="20dp"
-    tools:context=".MainActivity">
+    tools:context=".UpdateCourse">
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,9 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/add"
-            android:onClick="addItem"
+            android:onClick="updateItem"
             android:layout_marginTop="20dp"
-            android:text="Add Course"/>
+            android:text="Update Course"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,10 +79,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/update"
-            android:onClick="updateItem"
+            android:onClick="addItem"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
-            android:text="Update Course"/>
+            android:text="add Course"/>
 
 
     </LinearLayout>
